@@ -5,26 +5,25 @@ Starter template for [KAP — Kotlin Async Parallelism](https://github.com/damia
 ## Quick start
 
 ```bash
-# Clone this template
 git clone https://github.com/damian-rafael-lattenero/kap-starter.git my-project
 cd my-project
-
-# Run
 ./gradlew run
 ```
 
 ## What's included
 
-- `kap-core` dependency configured
+- `kap-core` + `kap-ksp` configured with `@KapTypeSafe` named builders
 - A minimal `Main.kt` with a parallel execution example
+- KSP generates `.withUser {}`, `.withCart {}`, `.withPromos {}` from your constructor
 - Gradle Kotlin DSL with JDK 21
-- Optional modules commented out in `build.gradle.kts` — uncomment what you need
+- Optional modules commented out in `build.gradle.kts`
 
 ## Modules
 
 | Module | What you get |
 |---|---|
 | `kap-core` | `with`, `then`, `andThen`, `race`, `traverse`, `memoize`, `timeout`, `recover` |
+| `kap-ksp` | `@KapTypeSafe` named builders — compiler enforces parameter order |
 | `kap-resilience` | `Schedule`, `CircuitBreaker`, `Resource`, `bracket`, `timeoutRace`, `raceQuorum` |
 | `kap-arrow` | `zipV`, `withV`, `validated {}`, `attempt()`, `raceEither` |
 | `kap-ktor` | Ktor plugin, circuit breaker registry, `respondAsync` |
