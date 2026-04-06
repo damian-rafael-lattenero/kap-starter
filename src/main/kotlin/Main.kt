@@ -25,7 +25,7 @@ suspend fun main() {
         .withUser { fetchUser() }       // ┐
         .withCart { fetchCart() }        // ├─ parallel
         .withPromos { fetchPromos() }   // ┘
-        .executeGraph()
+        .evalGraph()
 
     println(dashboard)
     // Dashboard(user=Alice, cart=3 items, $147.50, promos=SAVE20)
