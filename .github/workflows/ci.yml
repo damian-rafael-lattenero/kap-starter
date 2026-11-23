@@ -1,0 +1,22 @@
+name: CI
+
+# The starter must always build: it is the template every new kap consumer
+# copies. Same single-JDK shape as kap's own CI (Corretto 25 = the
+# starter's jvmToolchain).
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: corretto, java-version: "25" }
+      - uses: gradle/actions/setup-gradle@v4
+      - run: ./gradlew build --console=plain
